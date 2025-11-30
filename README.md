@@ -29,32 +29,19 @@ Though news and up-to-date information about financial markets are readily avaia
 
 ### Section: Agent/Tool Flow diagram
 
+#### Routing Agent with (1) Query Agent and (2) StockDetail Agent (MCPServerTool)
 ```mermaid
 flowchart TD
     User --> StockAnalystAgent
-    StockAnalystAgent --> |Prompt-based Routing| QueryAgent
-    StockAnalystAgent --> |Prompt-based Routing| RemoteEarningsAgent
-    StockAnalystAgent --> |Prompt-based Routing| StockDetailAgent
-    StockAnalystAgent --> |Prompt-based Routing| ResearchAgent
-    StockAnalystAgent --> |Prompt-based Routing| AnalysisAgent
-    ResearchAgent --> Validation{Check Entity/Sector}
-    Validation --> |Valid| StockFinderTool
-    Validation --> |Invalid| Response
-    StockFinderTool --> |List of Top Stocks| Response
-    RemoteEarningsAgent --> |Symbol, Period| A2AProxy
-    A2AProxy --> |Earnings| RemoteEarningsAgent
-    A2AProxy --> |Symbol, Period| RemoteA2AAgent
-    RemoteA2AAgent --> |Earnings| A2AProxy
+    StockAnalystAgent --> |Routing| QueryAgent
+    StockAnalystAgent --> RemoteEarningsAgent
+    StockAnalystAgent --> |Routing| StockDetailAgent
+    StockAnalystAgent --> ResearchAgent
+    StockAnalystAgent --> AnalysisAgent
     StockDetailAgent --> |Symbol| MCPServerTool
     MCPServerTool --> |Stock Info| StockDetailAgent
     MCPServerTool --> |Command| YahooFinanceMCPServer
     YahooFinanceMCPServer --> |STDIO Response| MCPServerTool
-    RemoteEarningsAgent --> |Annual/Quarterly Earnings| Response
-    AnalysisAgent --> |Parallel - symbol| EarningsAgent
-    AnalysisAgent --> |Parallel - symbol| StockDetailAgent
-    EarningsAgent --> |Aggregation - earnings| SummarizeAgent
-    StockDetailAgent --> |Aggregation - stock info| SummarizeAgent
-    SummarizeAgent --> |Report/Recommendation| Response
     QueryAgent --> |Only Prompt| EntityFinder
     QueryAgent --> |Only Prompt| SectorFinder
     QueryAgent --> |Comnapny Name| CompanyFinder
@@ -65,6 +52,45 @@ flowchart TD
     WebSearchAgent --> |GoogleSearch Results| Response
     Response --> EndOneTurn
 ```
+
+#### Routing Agent with (3) Remote A2A Earnings Agent and (4) Research Agent
+
+```mermaid
+flowchart TD
+    User --> StockAnalystAgent
+    StockAnalystAgent --> QueryAgent
+    StockAnalystAgent --> |Routing| RemoteEarningsAgent
+    StockAnalystAgent --> StockDetailAgent
+    StockAnalystAgent --> |Routing| ResearchAgent
+    StockAnalystAgent --> AnalysisAgent
+    ResearchAgent --> |Valid Entity type, Sector| StockFinderTool
+    ResearchAgent --> |Invalid Input| Response
+    StockFinderTool --> |List of Top Stocks| Response
+    RemoteEarningsAgent --> |Symbol, Period| A2AProxy
+    A2AProxy --> |Earnings| RemoteEarningsAgent
+    A2AProxy --> |Symbol, Period| RemoteA2AAgent
+    RemoteA2AAgent --> |Earnings| A2AProxy
+    RemoteEarningsAgent --> |Annual/Quarterly Earnings| Response
+    Response --> EndOfOneTurn
+```
+
+#### Routing Agent with (5) Analysis/Recommendation Agent using Local Earnings Agentt and StockDetail (MCP) Agent
+
+```mermaid
+flowchart TD
+    User --> StockAnalystAgent
+    StockAnalystAgent --> QueryAgent
+    StockAnalystAgent --> RemoteEarningsAgent
+    StockAnalystAgent --> ResearchAgent
+    StockAnalystAgent --> |Routing| AnalysisAgent
+    AnalysisAgent --> |Parallel - symbol| EarningsAgent
+    AnalysisAgent --> |Parallel - symbol| StockDetailAgent
+    EarningsAgent --> |Aggregation - earnings| SummarizeAgent
+    StockDetailAgent --> |Aggregation - stock info| SummarizeAgent
+    SummarizeAgent --> |Report/Recommendation| Response
+    Response --> EndOfOneTurn
+```
+
 
 ### Section: Sample Test scenarios/cases with possible prompts.
 
@@ -112,6 +138,8 @@ ______________________________________________________________________
   * ADK WEB default 'InMemorySessionService' was used for Dev testing.
   * SQLLite database using as 'DatabaseSessionServer' passing '--memory_service_uri' and --session_db_url to 'adk web' command.
   * (TBD) Vertex AI MemoryBank integration was done; however MemoryBank was not tested much.
+* GitHub Source Codebase:
+  * https://github.com/schakrab02/aiagent-st-fsi/tree/main
 
 
 ### Section: Development/Integration Testing Environment
@@ -150,6 +178,10 @@ ____________________
 * Yahoo Finance Server for making their GitHub repo public.
   * Repo URL: <a href="https://github.com/AgentX-ai/yahoo-finance-server"> AgentX-ai (Author: RobinXL)</a>
 * Blogs and Discussion Forums providing valuable insights of issues which were not easy to fix searching Google ADK documentation.
+  * https://iamulya.one/posts/adk-runner-and-runtime-configuration/
+  * https://google.github.io/adk-docs
+  * https://github.com/google/adk-python/issues/3522
+
 
 
 ## License
