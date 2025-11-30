@@ -114,4 +114,12 @@ a2a_app = to_a2a(
     earnings_remote_agent, port=8001  # Port where this agent will be served
     )
 
+root_agent = Agent(
+    name="helpful_assistant",
+    model="gemini-2.5-flash-lite",
+    description="A simple agent that can answer general questions. Just for deployment in Vertex Agent Engine",
+    instruction="You are a web search assistant. Use Google Search for current info or if unsure.",
+    tools=[google_search],
+)
+
 
