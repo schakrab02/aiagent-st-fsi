@@ -1,0 +1,10 @@
+[project]
+name = "Kaggle-AgentAI-Course"
+version = "0.1.0"
+description = "AI Agents using Google ADK"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "google-adk==1.18.0",
+    "pydantic>=2.11.10",
+]

@@ -1,0 +1,7 @@
+name: test_agent
+model: gemini-2.5-flash
+agent_class: LlmAgent
+description: Test
+instruction: You are the root agent that coordinates other agents.
+sub_agents: []
+tools: []

@@ -1,0 +1,6 @@
+google-adk
+google-adk[eval]
+google-adk[A2A]
+pydantic
+yfinance
+yahoo-finance-server
