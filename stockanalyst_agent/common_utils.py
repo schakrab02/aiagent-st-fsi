@@ -32,7 +32,7 @@ def setup_logger(logfile_name: str = 'stock-agent.log'):
     logger = logging.getLogger()
     logger.setLevel(logging.INFO)
 #    logging.basicConfig(filename='logger.log', level=logging.DEBUG, format='%(filename)s:%(lineno)s %(levelname)s:%(message)s',)
-    file_handler = RotatingFileHandler(logfile_name, mode='a', delay=True, maxBytes=100000, backupCount=8)
+    file_handler = RotatingFileHandler(logfile_name, mode='a', delay=True, maxBytes=250000, backupCount=3)
 #    file_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s : %(message)s'))
     file_handler.setFormatter(logging.Formatter('%(asctime)s - %(filename)s:%(lineno)s %(levelname)s : %(message)s'))
     logger.addHandler(file_handler)

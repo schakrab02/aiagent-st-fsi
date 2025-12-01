@@ -261,7 +261,7 @@ async def symbol_finder_tool(company_name: str) -> dict:  ## quarterly or annual
 #    print(f'Earnings = {en_dct}')
     return en_dct
 
-def entity_finder_tool(tool_context: ToolContext, ) -> dict:
+async def entity_finder_tool(tool_context: ToolContext, ) -> dict:
     '''To get list of Entity Types.
 
     Args:
@@ -272,13 +272,25 @@ def entity_finder_tool(tool_context: ToolContext, ) -> dict:
     '''
 
     try:
+        session_object = tool_context.session
+        session_id = session_object.id
+        event_history = session_object.events
+        user_id = tool_context._invocation_context.session.user_id
+        tool_context.state['app:tool_name'] = 'entity_finder_tool'
+        tool_context.state['user:user_id'] = user_id
+
+        symbol = tool_context.state.get('user:symbol', 'AAPL')  ## To BE REMOVED
+        tool_context.state['user:symbol'] = symbol
+
+        logger.info(f'Entering entity_finder_tool with User-ID: {user_id}  Session-ID: {session_id} Session State:\n{session_object.state}')
+
         msg = f'List of Entity types: {", ".join(list(gd.yfin_entity_type.__args__))}'
         return {'status' : 'success', 'message': msg}
     except Exception as ex:
         return {'status' : 'error', 'message': ex}
 
 
-def sector_finder_tool(tool_context: ToolContext, ) -> dict:
+async def sector_finder_tool(tool_context: ToolContext, ) -> dict:
     '''To get list of Sector Names.
 
     Args:
@@ -289,10 +301,111 @@ def sector_finder_tool(tool_context: ToolContext, ) -> dict:
     '''
 
     try:
+        session_object = tool_context.session
+        session_id = session_object.id
+        event_history = session_object.events
+        user_id = tool_context._invocation_context.session.user_id
+        tool_context.state['app:tool_name'] = 'sector_finder_tool'
+        tool_context.state['user:user_id'] = user_id
+
+        logger.info(f'Entering sector_finder_tool with User-ID: {user_id}  Session-ID: {session_id} Session State:\n{session_object.state}')
+
         msg = f'List of Sector names: {", ".join(list(gd.yfin_sectors.__args__))}'
         return {'status' : 'success', 'message': msg}
     except Exception as ex:
         return {'status' : 'error', 'message': ex}
 
+
+async def request_trading_order(symbol: str, buy_sell: str, nos_order: int, tool_context: ToolContext, ) -> dict:
+    '''
+    Args:
+        symbol: symbol or ticker of the order
+        buy_sell: either 'Buy' or 'Sell' for the order
+        nos_order: number of stock, symbol or ticker in this trading order
+
+    Returns:
+        Dictionary with status and a message.
+
+    '''
+
+    try:
+        session_object = tool_context.session
+        session_id = session_object.id
+        event_history = session_object.events
+        user_id = tool_context._invocation_context.session.user_id
+        tool_context.state['app:tool_name'] = 'request_trading_order'
+        tool_context.state['user:user_id'] = user_id
+
+        order_dtl = f'{buy_sell} OF {nos_order} stocks'
+        logger.info(f'Inside request_trading_order with User-ID: {user_id}  Session-ID: {session_id} Session State:{session_object.state} Order: {order_dtl}')
+
+#        symbol = tool_context.state.get('user:symbol', symbol)  ## TBD
+        price = tool_context.state.get('user:price', '200.24')  ## TBD
+        reco_ts = tool_context.state.get('user:reco_ts', '')
+
+#        stock_dtl = f' for {symbol} at approximate price {price}. Actual execution prices will be available after Trading is completed.'
+        stock_dtl = f' for {symbol} actual execution prices will be available after Trading is completed.'
+
+#        if len(symbol) == 0 or price <= 0.0:
+# VALIDATIONS
+        if len(symbol) == 0:
+            msg = f'Please do Analysis before placing a Trading Order:  {order_dtl}'
+            logger.info(f'Inside request_trading_order  Order is REJECTED: {msg}')
+            return { 'status': 'rejected', 'message': msg, }
+
+        if nos_order <= 0:
+            msg = f'Number of order must be greated that 0. Here is your order details: {order_dtl}'
+            logger.info(f'Inside request_trading_order  Order is REJECTED: {msg}')
+            return { 'status': 'rejected', 'message': msg, }
+
+        if nos_order > gd.TRADING_MAXIMUM_LIMIT:
+            msg = f'Number of order may be up to maximum {gd.TRADING_MAXIMUM_LIMIT}. Here is your order details: {order_dtl}'
+            logger.info(f'Inside request_trading_order  Order is REJECTED: {msg}')
+            return { 'status': 'rejected', 'message': msg, }
+
+# SCENARIO 1: Small orders (≤5 containers) auto-approve
+#        tool_context.state['user:symbol'] = symbol
+
+        if nos_order <= gd.TRADING_AUTO_APPROVAL_LIMIT:
+            msg = f'Your Order of {order_dtl} is Auto-Approved {stock_dtl}'
+            logger.info(f'Inside request_trading_order. Order is AUTO-APPROVED: {msg}')
+            tool_context.state['user:symbol'] = ''
+            return {
+                'status': 'approved',
+                'message': msg,
+            }
+
+# SCENARIO 2: This is the first time this tool is called. Large orders need human approval - PAUSE here.
+        if not tool_context.tool_confirmation:
+            msg = f'Your Order of {order_dtl} for {symbol} is Pending for Approval'
+            logger.info(f'Inside request_trading_order. Order is PENDING: {msg}')
+            tool_context.request_confirmation(
+                hint=f'⚠️ Large Trading Order exceeding {gd.TRADING_AUTO_APPROVAL_LIMIT} Order Detail: {order_dtl} for {symbol}. Do you want to approve?',
+                payload={'symbol': symbol, 'buy_sell': buy_sell, 'nos_order': nos_order},
+            )
+            return {  # This is sent to the Agent
+                'status': 'pending',
+                'message': msg,
+            }
+
+
+# SCENARIO 3: The tool is called AGAIN and is now resuming. Handle approval response - RESUME here.
+        if tool_context.tool_confirmation.confirmed:
+            msg = f'Your Order of {order_dtl} is Approved for {symbol}'
+            logger.info(f'Inside request_trading_order. Order is Approved: {msg}')
+            tool_context.state['user:symbol'] = ''
+            return {
+                'status': 'approved',
+                'message': msg,
+            }
+        else:
+            msg = f'Your Order of {order_dtl} for {symbol} is not approved.'
+            logger.info(f'Inside request_trading_order  Order is REJECTED: {msg}')
+            tool_context.state['user:symbol'] = ''
+            return { 'status': 'rejected', 'message': msg, }
+
+    except Exception as ex:
+        logger.info(f'Exception from request_trading_order:  {ex}')
+        return {'status' : 'error', 'message': ex}
 
 # print('✅ Function Tools entity_finder_tool and sector_finder_tool defined.')

@@ -14,6 +14,9 @@ MCP_YFIN_COMMAND = 'yahoo-finance-server'
 # MODEL_NAME = 'gemini-2.5-flash-lite'
 MODEL_NAME = 'gemini-2.5-flash'
 
+TRADING_AUTO_APPROVAL_LIMIT = 2
+TRADING_MAXIMUM_LIMIT = 1000
+
 retry_config=types.HttpRetryOptions(
     attempts=5,  # Maximum retry attempts
     exp_base=7,  # Delay multiplier

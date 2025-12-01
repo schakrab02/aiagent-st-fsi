@@ -25,7 +25,7 @@ from google.adk.sessions import InMemorySessionService, DatabaseSessionService, 
 from google.adk.tools import google_search, AgentTool, FunctionTool, ToolContext
 # from google.adk.tools.function_tool import FunctionTool
 from google.adk.code_executors import BuiltInCodeExecutor
-from google.adk.apps.app import App, EventsCompactionConfig
+from google.adk.apps.app import App, EventsCompactionConfig, ResumabilityConfig
 from google.adk.agents.remote_a2a_agent import ( RemoteA2aAgent, AGENT_CARD_WELL_KNOWN_PATH,)
 # from google.adk.tools.agent_tool import AgentTool
 # from google.adk.tools.google_search_tool import google_search
@@ -38,7 +38,7 @@ vertexai.init(
 # print(f'{os.environ["GOOGLE_CLOUD_PROJECT"]}  {os.environ["GOOGLE_CLOUD_LOCATION"]}')
 ##  exit()
 
-from .helper_tools import mcp_finance_server, stock_finder_tool, stock_finder_error, entity_finder_tool, sector_finder_tool, earnings_finder_tool, symbol_finder_tool
+from .helper_tools import mcp_finance_server, stock_finder_tool, stock_finder_error, entity_finder_tool, sector_finder_tool, earnings_finder_tool, symbol_finder_tool, request_trading_order
 from .data_struct import TickerMetadata, TickerMetadataList, StockResearchMetadata, StockData, dataclass_to_pydantic_model
 
 from . import global_data as gd
@@ -218,7 +218,34 @@ analysis_agent = SequentialAgent(
     sub_agents=[parallel_analysis_agent, review_summary_agent],
     )
 
+## Trading Agent
+trading_agent = LlmAgent(
+    name="trading_agent",
+    model=Gemini(model=gd.MODEL_NAME, retry_options=gd.retry_config),
+    instruction="""You are a trading request and approval coordinator assistant.
+                      
+    When users request to Buy or Sell with a specified number of stock or symbol or ticker:
 
+    Send your response with status and message from the tool.
+""",
+    tools=[FunctionTool(func=request_trading_order)],
+    )
+
+'''
+    1. Use the request_trading_order tool with Buy or Sell, and the number of stock or symbol or ticker.
+    2. If the order status is 'pending', inform the user that approval is required with a message returned from request_trading_order tool.
+    3. If the order status is 'approved', inform the user that approval is obtained and order is ready for execution with a message returned from request_trading_order tool.
+    4. If the order status is 'rejected', inform the user that approval is rejected with a message returned from request_trading_order tool.
+    5. After receiving the result, provide a clear summary. 
+    6. Keep responses concise but informative
+
+
+        - Order status (approved/rejected)
+        - Symbol 
+        - Price (if available)
+        - Side, either 'Buy' or 'Sell'
+        - Number of stock or symbol or ticker 
+'''
 ## ROOT AGENT: This is essentially a routing agent.
 root_agent = LlmAgent(
     model=Gemini(model=gd.MODEL_NAME, retry_options=gd.retry_config),
@@ -230,11 +257,12 @@ root_agent = LlmAgent(
     3. Use 'research_agent' tool, if you are asked to provide list of stocks for given entity type, sector name, and number of records.  For research and summarize, please use sub agent 'analysis_agent'.
     4. Use 'earnings_agent' tool, if you are asked to provide earnings information for symbol or ticker name. User may optionally provide period either 'annual' or 'quarterly'. For research and summarize, please use sub agent 'analysis_agent'.
     5. Use sub-agent 'analysis_agent', if you are asked to reseach and summarize for specific symbol or ticker.
-    6. Use 'web_search_agent' tool for all other user queries.    
+    6. Use 'trading_agent', if you are asked to Buy or Sell with number of stocks for a symbol. Call the tool with three parameters, Symbol, buy or sell, number of orders.. For example, Buy 10 stocks for symbol MSFT. For example, Please sell 25 stocks of NVDA
+    7. Use 'web_search_agent' tool for all other user queries.    
     ''' ,
     tools=[AgentTool(agent=query_agent), AgentTool(agent=stockdetail_agent), AgentTool(agent=research_agent), 
-        AgentTool(agent=earnings_agent), AgentTool(agent=web_search_agent), ],
-    sub_agents=[analysis_agent,],
+        AgentTool(agent=earnings_agent), AgentTool(agent=trading_agent), AgentTool(agent=web_search_agent), ],
+    sub_agents=[analysis_agent, ],
     output_key='analysis_result'  # The result of this agent will be stored in the session state with this key.
 )
 # app = App( name="stockanalyst_app", root_agent=root_agent, plugins=[ObservabilityPlugin()],  # Add your custom plugin here)
@@ -245,10 +273,11 @@ app = App(
     name="stockanalyst_agent",
     root_agent=root_agent,
     events_compaction_config=EventsCompactionConfig(
-          compaction_interval=3,   # Trigger compaction every 5 invocations
-          overlap_size=1,  # Keep 2 previous turn for context,
+          compaction_interval=30,   # Trigger compaction every 5 invocations
+          overlap_size=3,  # Keep 2 previous turn for context,
           ),
     plugins=[obsv_plugin],  # Add your custom plugin here
+    resumability_config=ResumabilityConfig(is_resumable=True),
     )
 # Register the plugin with the Runner
 # Credit: https://github.com/google/adk-python/issues/3522
@@ -262,10 +291,10 @@ async def setup_runner():
         name="stockanalyst_app",
         root_agent=root_agent,
         events_compaction_config=EventsCompactionConfig(
-          compaction_interval=3,   # Trigger compaction every 5 invocations
-          overlap_size=1,  # Keep 2 previous turn for context,
+          compaction_interval=30,   # Trigger compaction every 5 invocations
+          overlap_size=3,  # Keep 2 previous turn for context,
           ),
-        plugins=[ObservabilityPlugin()],  # Add your custom plugin here
+###        plugins=[ObservabilityPlugin()],  # Add your custom plugin here
         )
 
     runner = Runner(app=app, session_service=session_service)
