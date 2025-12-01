@@ -176,7 +176,7 @@ ______________________________________________________________________
   * GOOGLE_API_KEY
   * GOOGLE_CLOUD_PROJECT
 * Configuration
-  * Parameters in Python **global_data** module, including 'retry_config' and 'TRADING_AUTO_APPROVAL_LIMIT' for TradingAgent. Yahoo Finance Server configurations also included in this module.
+  * Parameters in Python **global_data** module, including 'retry_config' and 'TRADING_AUTO_APPROVAL_LIMIT' and 'TRADING_MAXIMUM_LIMIT' for TradingAgent. Yahoo Finance Server configurations also included in this module.
 * **Agent Memory management**
   * For Development testing, ADK WEB default 'InMemorySessionService'.
   * For Integration testing, SQLLite database as 'DatabaseSessionServer' by passing pre-created Sqlite3 database to 'adk web --session_db_url' command.
