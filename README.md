@@ -4,8 +4,7 @@
 
 
 ### Section: Objective and Business benefits.
-To create a financial investment chatbot to make novice investors better informed with latest financial information using Yahoo Finance. Encouragingly, as investment community gets bigger with infusion of younger people, such chatbot is becoming increasinly popular to the community instead of going through investment advisors.
-Though news and up-to-date information about financial markets are readily avaiable from Yahoo or other web-sites, this chatbot provides LLM-based interactions with Yahoo Finance server using both API and MCP based tools and agents. Additionally, user may also use this app to search Web for other topics/news using their favorite Google Search tool.
+To create a financial investment chatbot for some investors to get better informed with latest financial information using Yahoo Finance publicly available source with company details, earnings and market prices. Encouragingly, as investment community gets bigger with infusion of younger people, such chatbot is becoming increasingly popular to the community. Investors are slowly moving towards using such chatbots, instead of paying to professional Investment Advisors. Though news and up-to-date information about financial markets are readily available from Yahoo Finance or other web-sites, this chatbot provides LLM-based interactions with Yahoo Finance server using both API and MCP based tools and agents. Additionally, user may also use this app to search Web for other topics/news using their favorite Google Search tool.
 
 **DISCLAIMER**: This application is NOT intended to replace sound financial advice and guidance from certified investment professionals. Hence, author does NOT recommend anyone making any buy/sell investment decisions solely based on responses/recommendations by this chat-bot.
 
