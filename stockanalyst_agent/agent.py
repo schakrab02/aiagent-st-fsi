@@ -273,8 +273,8 @@ app = App(
     name="stockanalyst_agent",
     root_agent=root_agent,
     events_compaction_config=EventsCompactionConfig(
-          compaction_interval=30,   # Trigger compaction every 5 invocations
-          overlap_size=3,  # Keep 2 previous turn for context,
+          compaction_interval=5,   # Trigger compaction every 5 invocations
+          overlap_size=2,  # Keep 2 previous turn for context,
           ),
     plugins=[obsv_plugin],  # Add your custom plugin here
     resumability_config=ResumabilityConfig(is_resumable=True),
