@@ -2126,6 +2126,975 @@
         }
       },
       "creation_timestamp": 1764393214.8658729
+    },
+    {
+      "eval_id": "stock_analyst_integ_search",
+      "conversation": [
+        {
+          "invocation_id": "e-1a4bfeca-8743-4d50-88bd-f2f82390adbd",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Find symbol of Company Microsoft"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "The symbol for Microsoft is MSFT."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "stock_analysis_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-9a34f737-83d3-4357-a403-381af1a21973",
+                        "args": {
+                          "request": "symbol for Microsoft"
+                        },
+                        "name": "query_agent"
+                      },
+                      "thought_signature": "CqsCAePx_14_12vcmFktSXH1bMMjloyal1xYCuvEgOmPgEZt0sgMUA0pN08v3C7AKn6Xl6U8IZV189QD6yNKpSdodYGi5aQrpu2L7vxFmET8FUyAA6cp4joAuNTLDzMbVLKVLR1TPCAQfOXh2Ac65ngD8tnkAuC7fLYo8ptTsHK9uAQIFK3UxvgPA0sxVZGVW8c3FLGOiVogFOH41z28tDoiPQe-85kXjIWgjghB5Z6YtNHXU8ylaxK-26tAuYACc-Kt-GYbjj2trv3UDS-hDc60ODUKN1Z8zi1oop8-A2Wa3t1BrFmciPzis48x9arQpTh1-MJYM5rCaxY_eCZGRxFKKS02YZDOtX0xb_IQOujtRCne56371Dq7ZK9S5PhV_uAq4drMjVe0FzJZk0E="
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "stock_analysis_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-9a34f737-83d3-4357-a403-381af1a21973",
+                        "name": "query_agent",
+                        "response": {
+                          "result": "The symbol for Microsoft is MSFT and the exchange is NMS."
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              }
+            ]
+          },
+          "creation_timestamp": 1764609359.110395
+        },
+        {
+          "invocation_id": "e-628a2501-4e81-4cc8-b4c7-132691c5ffdf",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Find list of entity types"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "List of Entity types: etfs, mutual_funds, companies, growth_companies, performing_companies"
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "stock_analysis_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-a0145656-d8e4-4da2-a0e8-e77220b76e1d",
+                        "args": {
+                          "request": "list of entity types"
+                        },
+                        "name": "query_agent"
+                      },
+                      "thought_signature": "CuUCAePx_16tBOhEpqJw_infMbxhUE9quR6z80_XlTFR9OMhXhEHXvZUn-zFjjB5fahtxdKkN7wkKUUDkHH5AAkPccHqWSRVwstQgWyb0J2UB2DGA-o5VDSzpDFXCFKW-3XBrnIY7pt7qD_j931HAnWf06SkMFiUy3GNh6p6zVP3E0N2PEzt4w7GPTpV4Dzi9uetJHU5Bo_9ktzCUXC-lx1IvH-ivOKGVCvyqPXUZzYPW_bt0rN7X-iSGSG2BDBwxbU61AWgn8_PY7leFlOTJZVJWHhwm3dGO8T7K_IgFK2Muctl-gP3aQaODrabB3bDBkOJY8iJbnFBqBb1xEY-sCQ6Fzyw-mAkG46FrruJtW7_TTmH12AZo0Tl9jQ4uCPouPRG2XP5W4NW2UoL3parOB60sttlESD163Qszx-Mzy09n82z2E-BA0jgHmrZcRPMBm9ncA69rDEzDuAUUrCUwI3NtVkr3yX6"
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "stock_analysis_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-a0145656-d8e4-4da2-a0e8-e77220b76e1d",
+                        "name": "query_agent",
+                        "response": {
+                          "result": "List of Entity types: etfs, mutual_funds, companies, growth_companies, performing_companies"
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              }
+            ]
+          },
+          "creation_timestamp": 1764609386.736568
+        },
+        {
+          "invocation_id": "e-1b54b116-92ec-4458-ada8-0b95e5e2c004",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Find list of sectors"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "The list of Sector names are: basic-materials, communication-services, consumer-cyclical, consumer-defensive, energy, financial-services, healthcare, industrials, real-estate, technology, utilities."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "stock_analysis_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-f26aa3a6-9d5f-4a31-beb5-1535a32049c0",
+                        "args": {
+                          "request": "list of sectors"
+                        },
+                        "name": "query_agent"
+                      },
+                      "thought_signature": "CtgCAePx_14KvJBl1lK2oARI4nWjsy-3FCWGd95NjshzSs1T-Bm5kypwMr8iSa9tiJECrsy18jcpJjZRh2bt1UfFQfzjNnArMY_8_FFN_VFNTj3Qy2uNx65CoglnvDn3TyRiReFMwcRSWSmeRL_dik42LGuNbB0bj8AeH84ixK0MDqwL3GhZURnJNSaSRTQNnfsbVCrYDt19yc6Z3cU3EjP_2GmHoY4E8_XEKldtlhudEOL8neFQ5thuhxm6aqtaxRX6Gcc_8gQ-YYX1betYtb7tvesrjgmlF9e-ZmBOqVQaifZTsOT5lNUWCUziozg5O63XExlr4plIS4SbNNepEfiSdeov9XLV40ZA4nkHpWOZnWCDZjE8aHqd5EEGJIxE52Wet850O41EJjxpmDSqgWi0lkKDqLB0wJ6bpBAYSR83mQLGRUTApXHZA2pS5w5cgXuYI9mvkhF4QBc="
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "stock_analysis_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-f26aa3a6-9d5f-4a31-beb5-1535a32049c0",
+                        "name": "query_agent",
+                        "response": {
+                          "result": "The list of Sector names are: basic-materials, communication-services, consumer-cyclical, consumer-defensive, energy, financial-services, healthcare, industrials, real-estate, technology, utilities."
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              }
+            ]
+          },
+          "creation_timestamp": 1764609417.177864
+        },
+        {
+          "invocation_id": "e-e062abc0-da8a-4b7a-83f2-1beff9dd544e",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Get top Political news in the USA today"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "Here's a brief technical summary of top political news in the USA today:\n\nDecember 1, 2025, sees significant activity in US politics, particularly regarding congressional redistricting, with critical developments expected in states like Texas, Florida, and Indiana as deadlines approach. Additionally, discussions continue around the National Defense Authorization Act (NDAA), specifically concerning the inclusion of the GAIN AI measure which aims to limit foreign exports of high-tech chips. The Supreme Court is also active, hearing arguments on cases such as copyright infringement liability for service providers and the role of federal courts in asylum cases, while also facing decisions on the Trump administration's requests regarding federal appointments and National Guard deployment. Meanwhile, the White House unveiled its Christmas decorations for 2025, themed \"Home Is Where the Heart Is,\" with a nod to the upcoming 250th anniversary of the Declaration of Independence. Past events, such as the shooting of National Guard members in D.C. and controversies surrounding alleged orders for second strikes on boat survivors, continue to be subjects of congressional scrutiny and public discussion."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "stock_analysis_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-dad31361-b67b-4d96-86f2-526083148e03",
+                        "args": {
+                          "request": "top Political news in the USA today"
+                        },
+                        "name": "web_search_agent"
+                      },
+                      "thought_signature": "CsIDAePx_15J3eEPs7ssbbZWv6nnjpsgpZFWkQfpV3ZNMiNEihmuKbFrU4UlkUXWsLP4HMO61InEq6PiLUHQuVyZl0fLcMhXo2xJ1LEnTcGaWXkdmnSgisMgfxoZSoBB3afw0VF_q0LYS5zIvUZssR_AOfmIbtQrEGmNGeinQWCroi-6qNczq7c535M-sIuA97OkEwYqCRaCIpQuO2k8ubjh4gMsjZXhnmtr6XbanDTQ4ZNlUVbddu1UdF_2OmR5blLCS5hrKrIEA-avCHz7Eaq9LEHPTZAKsMrLj3K4IwDvBECfm7UaAyh9nPmRZtACX7xExhXQPwc_eF_4utvp8VVX83lOQhB49h805liUbPkfnrDSCyc-0IlwG3qs2sfsP9kJhkTg_aWV2Epv8R5z5FAu2zXTKrFc6mDmKx-QR0AkHi3cvEI16EPml0uMY4h1dB0iT859nIat748Zy-aoZzrGQLMdXzMTSf8_BGOcEi_r7J5d7xWk6xp-7QMt6--HZxTh0uSPtU9Q4a-GwrK1QKg4QoOIJkmefDb_IrkmXCXV_PcBOWMBLeM1kBfRN5nRBPGhIcV4ReKf4XUXOk2-1jRiHQYD"
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "stock_analysis_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-dad31361-b67b-4d96-86f2-526083148e03",
+                        "name": "web_search_agent",
+                        "response": {
+                          "result": "Here's a brief technical summary of top political news in the USA today:\n\nDecember 1, 2025, sees significant activity in US politics, particularly regarding congressional redistricting, with critical developments expected in states like Texas, Florida, and Indiana as deadlines approach. Additionally, discussions continue around the National Defense Authorization Act (NDAA), specifically concerning the inclusion of the GAIN AI measure which aims to limit foreign exports of high-tech chips. The Supreme Court is also active, hearing arguments on cases such as copyright infringement liability for service providers and the role of federal courts in asylum cases, while also facing decisions on the Trump administration's requests regarding federal appointments and National Guard deployment. Meanwhile, the White House unveiled its Christmas decorations for 2025, themed \"Home Is Where the Heart Is,\" with a nod to the upcoming 250th anniversary of the Declaration of Independence. Past events, such as the shooting of National Guard members in D.C. and controversies surrounding alleged orders for second strikes on boat survivors, continue to be subjects of congressional scrutiny and public discussion."
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              }
+            ]
+          },
+          "creation_timestamp": 1764609438.241253
+        }
+      ],
+      "session_input": {
+        "app_name": "stockanalyst_agent",
+        "user_id": "user",
+        "state": {
+          "stockdetail_result": "",
+          "earnings_result": ""
+        }
+      },
+      "creation_timestamp": 1764609490.1385763
+    },
+    {
+      "eval_id": "stock_analysis_integ_trading",
+      "conversation": [
+        {
+          "invocation_id": "e-1a4bfeca-8743-4d50-88bd-f2f82390adbd",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Find symbol of Company Microsoft"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "The symbol for Microsoft is MSFT."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "stock_analysis_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-9a34f737-83d3-4357-a403-381af1a21973",
+                        "args": {
+                          "request": "symbol for Microsoft"
+                        },
+                        "name": "query_agent"
+                      },
+                      "thought_signature": "CqsCAePx_14_12vcmFktSXH1bMMjloyal1xYCuvEgOmPgEZt0sgMUA0pN08v3C7AKn6Xl6U8IZV189QD6yNKpSdodYGi5aQrpu2L7vxFmET8FUyAA6cp4joAuNTLDzMbVLKVLR1TPCAQfOXh2Ac65ngD8tnkAuC7fLYo8ptTsHK9uAQIFK3UxvgPA0sxVZGVW8c3FLGOiVogFOH41z28tDoiPQe-85kXjIWgjghB5Z6YtNHXU8ylaxK-26tAuYACc-Kt-GYbjj2trv3UDS-hDc60ODUKN1Z8zi1oop8-A2Wa3t1BrFmciPzis48x9arQpTh1-MJYM5rCaxY_eCZGRxFKKS02YZDOtX0xb_IQOujtRCne56371Dq7ZK9S5PhV_uAq4drMjVe0FzJZk0E="
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "stock_analysis_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-9a34f737-83d3-4357-a403-381af1a21973",
+                        "name": "query_agent",
+                        "response": {
+                          "result": "The symbol for Microsoft is MSFT and the exchange is NMS."
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              }
+            ]
+          },
+          "creation_timestamp": 1764609359.110395
+        },
+        {
+          "invocation_id": "e-628a2501-4e81-4cc8-b4c7-132691c5ffdf",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Find list of entity types"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "List of Entity types: etfs, mutual_funds, companies, growth_companies, performing_companies"
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "stock_analysis_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-a0145656-d8e4-4da2-a0e8-e77220b76e1d",
+                        "args": {
+                          "request": "list of entity types"
+                        },
+                        "name": "query_agent"
+                      },
+                      "thought_signature": "CuUCAePx_16tBOhEpqJw_infMbxhUE9quR6z80_XlTFR9OMhXhEHXvZUn-zFjjB5fahtxdKkN7wkKUUDkHH5AAkPccHqWSRVwstQgWyb0J2UB2DGA-o5VDSzpDFXCFKW-3XBrnIY7pt7qD_j931HAnWf06SkMFiUy3GNh6p6zVP3E0N2PEzt4w7GPTpV4Dzi9uetJHU5Bo_9ktzCUXC-lx1IvH-ivOKGVCvyqPXUZzYPW_bt0rN7X-iSGSG2BDBwxbU61AWgn8_PY7leFlOTJZVJWHhwm3dGO8T7K_IgFK2Muctl-gP3aQaODrabB3bDBkOJY8iJbnFBqBb1xEY-sCQ6Fzyw-mAkG46FrruJtW7_TTmH12AZo0Tl9jQ4uCPouPRG2XP5W4NW2UoL3parOB60sttlESD163Qszx-Mzy09n82z2E-BA0jgHmrZcRPMBm9ncA69rDEzDuAUUrCUwI3NtVkr3yX6"
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "stock_analysis_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-a0145656-d8e4-4da2-a0e8-e77220b76e1d",
+                        "name": "query_agent",
+                        "response": {
+                          "result": "List of Entity types: etfs, mutual_funds, companies, growth_companies, performing_companies"
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              }
+            ]
+          },
+          "creation_timestamp": 1764609386.736568
+        },
+        {
+          "invocation_id": "e-1b54b116-92ec-4458-ada8-0b95e5e2c004",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Find list of sectors"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "The list of Sector names are: basic-materials, communication-services, consumer-cyclical, consumer-defensive, energy, financial-services, healthcare, industrials, real-estate, technology, utilities."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "stock_analysis_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-f26aa3a6-9d5f-4a31-beb5-1535a32049c0",
+                        "args": {
+                          "request": "list of sectors"
+                        },
+                        "name": "query_agent"
+                      },
+                      "thought_signature": "CtgCAePx_14KvJBl1lK2oARI4nWjsy-3FCWGd95NjshzSs1T-Bm5kypwMr8iSa9tiJECrsy18jcpJjZRh2bt1UfFQfzjNnArMY_8_FFN_VFNTj3Qy2uNx65CoglnvDn3TyRiReFMwcRSWSmeRL_dik42LGuNbB0bj8AeH84ixK0MDqwL3GhZURnJNSaSRTQNnfsbVCrYDt19yc6Z3cU3EjP_2GmHoY4E8_XEKldtlhudEOL8neFQ5thuhxm6aqtaxRX6Gcc_8gQ-YYX1betYtb7tvesrjgmlF9e-ZmBOqVQaifZTsOT5lNUWCUziozg5O63XExlr4plIS4SbNNepEfiSdeov9XLV40ZA4nkHpWOZnWCDZjE8aHqd5EEGJIxE52Wet850O41EJjxpmDSqgWi0lkKDqLB0wJ6bpBAYSR83mQLGRUTApXHZA2pS5w5cgXuYI9mvkhF4QBc="
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "stock_analysis_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-f26aa3a6-9d5f-4a31-beb5-1535a32049c0",
+                        "name": "query_agent",
+                        "response": {
+                          "result": "The list of Sector names are: basic-materials, communication-services, consumer-cyclical, consumer-defensive, energy, financial-services, healthcare, industrials, real-estate, technology, utilities."
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              }
+            ]
+          },
+          "creation_timestamp": 1764609417.177864
+        },
+        {
+          "invocation_id": "e-e062abc0-da8a-4b7a-83f2-1beff9dd544e",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Get top Political news in the USA today"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "Here's a brief technical summary of top political news in the USA today:\n\nDecember 1, 2025, sees significant activity in US politics, particularly regarding congressional redistricting, with critical developments expected in states like Texas, Florida, and Indiana as deadlines approach. Additionally, discussions continue around the National Defense Authorization Act (NDAA), specifically concerning the inclusion of the GAIN AI measure which aims to limit foreign exports of high-tech chips. The Supreme Court is also active, hearing arguments on cases such as copyright infringement liability for service providers and the role of federal courts in asylum cases, while also facing decisions on the Trump administration's requests regarding federal appointments and National Guard deployment. Meanwhile, the White House unveiled its Christmas decorations for 2025, themed \"Home Is Where the Heart Is,\" with a nod to the upcoming 250th anniversary of the Declaration of Independence. Past events, such as the shooting of National Guard members in D.C. and controversies surrounding alleged orders for second strikes on boat survivors, continue to be subjects of congressional scrutiny and public discussion."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "stock_analysis_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-dad31361-b67b-4d96-86f2-526083148e03",
+                        "args": {
+                          "request": "top Political news in the USA today"
+                        },
+                        "name": "web_search_agent"
+                      },
+                      "thought_signature": "CsIDAePx_15J3eEPs7ssbbZWv6nnjpsgpZFWkQfpV3ZNMiNEihmuKbFrU4UlkUXWsLP4HMO61InEq6PiLUHQuVyZl0fLcMhXo2xJ1LEnTcGaWXkdmnSgisMgfxoZSoBB3afw0VF_q0LYS5zIvUZssR_AOfmIbtQrEGmNGeinQWCroi-6qNczq7c535M-sIuA97OkEwYqCRaCIpQuO2k8ubjh4gMsjZXhnmtr6XbanDTQ4ZNlUVbddu1UdF_2OmR5blLCS5hrKrIEA-avCHz7Eaq9LEHPTZAKsMrLj3K4IwDvBECfm7UaAyh9nPmRZtACX7xExhXQPwc_eF_4utvp8VVX83lOQhB49h805liUbPkfnrDSCyc-0IlwG3qs2sfsP9kJhkTg_aWV2Epv8R5z5FAu2zXTKrFc6mDmKx-QR0AkHi3cvEI16EPml0uMY4h1dB0iT859nIat748Zy-aoZzrGQLMdXzMTSf8_BGOcEi_r7J5d7xWk6xp-7QMt6--HZxTh0uSPtU9Q4a-GwrK1QKg4QoOIJkmefDb_IrkmXCXV_PcBOWMBLeM1kBfRN5nRBPGhIcV4ReKf4XUXOk2-1jRiHQYD"
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "stock_analysis_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-dad31361-b67b-4d96-86f2-526083148e03",
+                        "name": "web_search_agent",
+                        "response": {
+                          "result": "Here's a brief technical summary of top political news in the USA today:\n\nDecember 1, 2025, sees significant activity in US politics, particularly regarding congressional redistricting, with critical developments expected in states like Texas, Florida, and Indiana as deadlines approach. Additionally, discussions continue around the National Defense Authorization Act (NDAA), specifically concerning the inclusion of the GAIN AI measure which aims to limit foreign exports of high-tech chips. The Supreme Court is also active, hearing arguments on cases such as copyright infringement liability for service providers and the role of federal courts in asylum cases, while also facing decisions on the Trump administration's requests regarding federal appointments and National Guard deployment. Meanwhile, the White House unveiled its Christmas decorations for 2025, themed \"Home Is Where the Heart Is,\" with a nod to the upcoming 250th anniversary of the Declaration of Independence. Past events, such as the shooting of National Guard members in D.C. and controversies surrounding alleged orders for second strikes on boat survivors, continue to be subjects of congressional scrutiny and public discussion."
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              }
+            ]
+          },
+          "creation_timestamp": 1764609438.241253
+        },
+        {
+          "invocation_id": "e-6350eacf-c003-4625-b54a-1f0549203121",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Find top 10 stocks for entity type performing_companies and sector healthcare order by ytd return. Your response should list company name, industry, symbol, exchange, YTD return in Tabular format. Convert YTD Return as Percentage up to 2 decimals."
+              }
+            ],
+            "role": "user"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "stock_analysis_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-9c0663fa-46e4-4664-ac5d-99ef7009efcc",
+                        "args": {
+                          "request": "top 10 stocks for entity type performing_companies and sector healthcare order by ytd return"
+                        },
+                        "name": "research_agent"
+                      },
+                      "thought_signature": "CuYFAePx_14FQw4gr0vxxpzYPnYxQQfPsDZY0MBLE8bMAwXuTw7sA-y_iy0erSDO95NsFT1PxbitNvdybPH-IUtx9-x1vOHFjVY5CqL3QG3lW80PaNvBdIEjKeARP3ZHjebXnsdcF4OeGFD2LbJVPiMKxZHtlKQ8a9HORzmaK-cQiatZUWcCo3G1B36tj70MCKiwY43Fs0kh2cBWPVr8OAj7GahEQGnoeLoTbTg_6MLkSH8UYA1Pzsj8e60xVUgMXxcmfHIbphF02yQBXvHyWHvtEA2D-itHFvnep2UGNa6sPlPAMC7g0omNjDwq4Ig1eyhN_yyjkTOAj5C5wkSdjeIrnqv97UlI5yPsrr2xHPsniDzFjUNjhCJX3iIj7fDEIeCF1VaauycNiGQgmP8Xm4KPFCj509JhviRYuFnL1rWRrmtU04gYCK8HKXaJmFUDci9cprrXFxJ8nDoACXB9cujfnkTiJkra99HiB62ZQJ-u9tPvdD_WRfWf57Pgf56EDZ_WBpGsPjEybloXbEZTKksEzr6X0Yey5ri55xdKpWTY-3iZ74Xr5wpWorGUPXp_CxeX_almZatTTc_5pk2YEViICOmQEg1UElWnfz5Dv5iRPK-HuQjFZhkIpneEKV9JXyo9RypK7Ih3Eoj4RE8P5OYyHzcDCsmHXb_vSHXL3XU_jqixadMlKjZFu3hrX4ZYgUZ7c4pNdxUkZIdH8j6Qr2HOQfLddxMe665X4pbTp1t_pPPrwneT6zg0xKxl3HG6rBoGD_x_1XkQ4ZvDLL_a3ewitIo1ZxLzXREoy5Ro5Wj8APxPPJIdVRWuqIXfxw_zssCwwi2-ZN9KQHlU08K9MdbMUxZm7p6a04nkr0WiVtnJEN9YlqpEl395438J4m59uhI2NqCOZMAGUXhD9aCnfzUlyQWqxFnWAfa4r3MjNbdT9RK55yGwF6X4K6F6YPObPWFHMJhor3zBbTTxv9abIIixI_F2V_NbBg=="
+                    }
+                  ],
+                  "role": "model"
+                }
+              }
+            ]
+          },
+          "creation_timestamp": 1764609523.043564
+        },
+        {
+          "invocation_id": "e-a56e2de0-2ca6-4d81-a42a-0b816d9fc698",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Research and Summarize stock symbol NVDA"
+              }
+            ],
+            "role": "user"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "stock_analysis_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-cd2a88c6-ee80-410e-be02-4abea7444086",
+                        "args": {
+                          "agent_name": "Analysis_Agent"
+                        },
+                        "name": "transfer_to_agent"
+                      },
+                      "thought_signature": "CoACAePx_16zzPSRVhkUlEV09PyyIU-g3ORqRzgNkL8d7p0wlyeER2Qbs1GBCMimnGl2kkaXu1N4-dGTUKXnN1CzdvGlOgc7NF1ZIa4942MSi89v9-UxR1t5YG48UKX59JfO24iTrAkT-wvgLN-NQOUqm0YYAqIOx5H4cxpdz-KZSO68D7woONVujOuPzkg1pu-VUNN33ACc-PoDNhDpQTLYjwI0ml-VQx0wL-9BuTBwGHIhjBbQ4eGtoc8q8GsHK5CPJjdIUzKLHE0XLjU7AoEveq-50y7tpNqIfjCjaVR8CraZ8DSzwqFXEcKZFphGreY5MyGh8YAdRmBzu7fztO_73Q=="
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "stock_analysis_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-cd2a88c6-ee80-410e-be02-4abea7444086",
+                        "name": "transfer_to_agent",
+                        "response": {
+                          "result": null
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "earnings_local_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-a66d9691-8e67-4d85-a491-e337efbcd623",
+                        "args": {
+                          "period": "quarterly",
+                          "symbol": "NVDA"
+                        },
+                        "name": "earnings_finder_tool"
+                      },
+                      "thought_signature": "CogEAePx_16EsOhEzKE75kh_plQ9uyyFFbIs81Ngetm_16eHVy-CSKkfAe52TAxQGknK57g-HHbXxMKfhXg2HIMHZRWsV6Z-hCwqhxp5fplOoCA_cU2DSKmXo9ucmZf0Uz12PKY8OQSvGr3p_0mBOGIsF1e3efZrzGzrb8pJfedMFJIKjrx1h5IgqVmoy_--0dWuOHeM8G1BeiIFrNyS_rqi6At8Ikwf7VfY93OWhp4w8PaBw7q-uamA-QsTJJHBXVt04uuttaBux2UgV2X5bO7bOs9rEAokxUKhLyXur0hiQb9na2qllkKNNYarUNulS0VbhDdBwnITjLHdI7DOy6R5sRLGqkvPgRbIB-zy64yFJpfy3nJqoLaUWfl7KqXNwjG7kebrEtzJFPt4LTaexQLVU0S1rUGV6xApKX_Ha8Pw_3zfrhVou_XgkDYVrDHDIR1Zg0l4iodULoGyCNN0H9p2x3A-VZ6lmkTq3lslicdOjvm_GR8elssc1Z9Xd9xwfCU5SfC_FamD3F9gH8Cwc4GNr_qrhUCwrM6v0Zz0ogn9Uurcsn__3P5z9E7byL-X5neuk5wYzS-ivLc5gZqgTLn5ZOlm6Csq3Wns5yQbzydeM1xk7xGQ5w9oW8fDPPdZCsKJrxVpPTQkERrK0SiPk7pNu4jEGeD30plE6YnLOVGa_UJvatEMWYP5OQ=="
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "earnings_local_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-a66d9691-8e67-4d85-a491-e337efbcd623",
+                        "name": "earnings_finder_tool",
+                        "response": {
+                          "status": "success",
+                          "message": "",
+                          "earning_list": [
+                            {
+                              "date": "2025-10-31",
+                              "total_revenue": 57006000000.0,
+                              "gross_profit": 41849000000.0,
+                              "operating_income": 36010000000.0,
+                              "net_income": 31910000000.0,
+                              "ebitda": 38748000000.0
+                            },
+                            {
+                              "date": "2025-07-31",
+                              "total_revenue": 46743000000.0,
+                              "gross_profit": 33853000000.0,
+                              "operating_income": 28440000000.0,
+                              "net_income": 26422000000.0,
+                              "ebitda": 31937000000.0
+                            },
+                            {
+                              "date": "2025-04-30",
+                              "total_revenue": 44062000000.0,
+                              "gross_profit": 26668000000.0,
+                              "operating_income": 21638000000.0,
+                              "net_income": 18775000000.0,
+                              "ebitda": 22584000000.0
+                            },
+                            {
+                              "date": "2025-01-31",
+                              "total_revenue": 39331000000.0,
+                              "gross_profit": 28723000000.0,
+                              "operating_income": 24034000000.0,
+                              "net_income": 22091000000.0,
+                              "ebitda": 25821000000.0
+                            },
+                            {
+                              "date": "2024-10-31",
+                              "total_revenue": 35082000000.0,
+                              "gross_profit": 26156000000.0,
+                              "operating_income": 21869000000.0,
+                              "net_income": 19309000000.0,
+                              "ebitda": 22855000000.0
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "earnings_local_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-eaae8ee2-9919-4273-9e25-fb83311e9299",
+                        "args": {
+                          "earnings_result": [
+                            {
+                              "EBIDTA": 38748000000,
+                              "Total Revenue": 57006000000,
+                              "Net Income": 31910000000,
+                              "Gross Profit": 41849000000,
+                              "Date": "2025-10-31",
+                              "Operating Income": 36010000000
+                            },
+                            {
+                              "Gross Profit": 33853000000,
+                              "Date": "2025-07-31",
+                              "Operating Income": 28440000000,
+                              "EBIDTA": 31937000000,
+                              "Net Income": 26422000000,
+                              "Total Revenue": 46743000000
+                            },
+                            {
+                              "EBIDTA": 22584000000,
+                              "Gross Profit": 26668000000,
+                              "Operating Income": 21638000000,
+                              "Net Income": 18775000000,
+                              "Total Revenue": 44062000000,
+                              "Date": "2025-04-30"
+                            },
+                            {
+                              "Net Income": 22091000000,
+                              "EBIDTA": 25821000000,
+                              "Total Revenue": 39331000000,
+                              "Gross Profit": 28723000000,
+                              "Date": "2025-01-31",
+                              "Operating Income": 24034000000
+                            },
+                            {
+                              "EBIDTA": 22855000000,
+                              "Operating Income": 21869000000,
+                              "Date": "2024-10-31",
+                              "Net Income": 19309000000,
+                              "Gross Profit": 26156000000,
+                              "Total Revenue": 35082000000
+                            }
+                          ]
+                        },
+                        "name": "save_session_state"
+                      },
+                      "thought_signature": "CpkHAePx_15i8LnOZfl396sWHLkBg9Kkf4BiOBabteTD03sLX80yWlf1k3l5zhn5fkxxI3Pb56ZSJceYLLW0BodAq0d-fRNJSRf0PR1Q-XwzYF2zDdJlmwZvo6EdqRpyik8J0MJ9JrOLNiygeikpsv9uFLcrdxAaNiUGpOlVafw8pbU_x_ISKzuYY0GDg0Tx0jIRmiQ2b6XWIjrr7QMokKPjFdp_hKWE5KJ-Zq3gQsmhoZndehRN9IQWKvOwlOJwNGaIDOzM2AWZ7q9ydTSagGlFNUIuOxbdNYuxk0Qx26jiDKsvDK3CDmFj2OqBsvTdpzKiOBHpwX8gn2UU5g0I-wTe5IAnYJj3UKinPbL-opbwcD0QU8ikeQvFllSH7GnqlmUghWXm5KYUkdtxQB_mzJ7CQtHDqF8PFPppCqFvFK8HfXi_WiwJAfj7d7WJB3xT3uzsrtRBkekqbD9E5oR8Uzgx56ywQI6ZVxPmBblPb0eZfIynvLROzeuSxNl5UouvS_XvO1jLcYZ9dwtpwB9Gkvix82L6TZCioThw-Y4MvBir_eQTYUNl8K-HQMNG7ZQIWrnKpZWUlP6eAUsPqI6Ngtevqp-LoEB2QJTLoKu761ehRs8ZvKrJO9ZzLSTbyAGXUKWM1UgsNQcnhlTnLD_RaBCDXvVPbZrmYG83G_QEiQEsxjyDN6rWQmBd2Mbysu9TCoRNDt8oAdptwNqLWp_AORfPuQor__PK2wLOx3CLatRO3qyKaVYG-6y1t8S77gO8yZHq02oDmEh0wUo6lPQvHOfbx3Ce3dsjxFYUemjgI09FTn8ksO8CeSStgmfQZ5Y43RpQlnPV60pYlFYP7-lnnAp3z0zXDN7gvHoRuqyOx8F3gt2sPiHN1QhajmCQgNwfxnNHb1VoJHqell_ldwzFh-_hGzuPg0HHgTyIdAPtK_Fkr-j6rqrgp82_Vrvu5VVAO_fZVt1ak4AqHCk8kTHor6YXxnQRRjpvrHof2hijMcnN8CBRzXxwrFQFHKN1uvoJedz7lKep4MZC1-xSwZ8A_lax4gEne_K3IGACdjjHwnorLuYdbCROGbKFgxQLTQe10lxTmDLI-axTPe_rayoLKO74NXHsQfmHG3hmBmyN5evBYJJ-3kHCdIl2_rjfvIUWjkgR6eTImMVIyed2Q9FBsWdlsvpiS1j77VRi_r53rU1qFf9TpzREXAsnbtYHnV0YkVUkvwkF_9zEMR6s"
+                    }
+                  ],
+                  "role": "model"
+                }
+              }
+            ]
+          },
+          "creation_timestamp": 1764609605.145318
+        },
+        {
+          "invocation_id": "e-4832db09-3051-4952-b1e7-b1547c682a7f",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Place a Buy order of 2 shares on INTC"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "Your Order of Buy OF 2 stocks is Auto-Approved for INTC actual execution prices will be available after Trading is completed."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "stock_analysis_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-531f1ae7-c91c-405d-a266-6d7e07dfce6d",
+                        "args": {
+                          "request": "Buy 2 shares of INTC"
+                        },
+                        "name": "trading_agent"
+                      },
+                      "thought_signature": "Ct0CAePx_15305uc8w9CfxUD3DXzY2lXo5BLgQW2a-JvxPXIigaFoGfSQNaoENNLgEytesp3wHvi6I82R4HORbaAkGPd74AKp1C9y6tWR6PVLuHL6yQO-N2DQLCqkiAPUPjhod9U784t4HmHQKs-fQVBFjRMCaWI6xM5TPPEC93maslynFK3kX1rCQyjueRtZVkGp-V0FHdw6Vd1A0VuEnrvVbpEL6R13HGzP6fRH2AJ3we7kwdacFO4q8ZdD1P4yYjg7RrFcWLZf4gtm7tq0dzKmUmhc3hlLXy5aU6vMSRT5vPpbj_iZfKOhkpopiDZtXfirAMDJCXBGHfp52koHLiXmiAMkpOCxDeyn6iQY5fCtpsSFgbE0_antB95w1MOsKwTsxf-2lemzWPkxcrtYkvRKJOgjAJW-05zIaQq8p8Rh9VKVolzE6HKIQxdGphq_cRBu3loItjCSsCbm-iqUQ=="
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "stock_analysis_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-531f1ae7-c91c-405d-a266-6d7e07dfce6d",
+                        "name": "trading_agent",
+                        "response": {
+                          "result": "Your Order of Buy OF 2 stocks is Auto-Approved for INTC actual execution prices will be available after Trading is completed."
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              }
+            ]
+          },
+          "creation_timestamp": 1764609649.579387
+        },
+        {
+          "invocation_id": "e-c4aed33f-c1a1-4c5a-83d9-89110150e969",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Place a Sell order of 7 for NVDA"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "Your Order of Sell OF 7 stocks for NVDA is Pending for Approval"
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "stock_analysis_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-2e65e065-6d9d-4fc5-8730-ce3d6f8ab6eb",
+                        "args": {
+                          "request": "Sell 7 shares of NVDA"
+                        },
+                        "name": "trading_agent"
+                      },
+                      "thought_signature": "Cs8CAePx_14IhAyQmav8XNY7PYWsfdDMbXjYNHmMFo3J2aiXZ5b1BnGuHGshy94zI8if5FGvWM1Rsx06tayB1DGSJ3EpLCg14gJo4ixraWPCpFrWkXXVS2uhd2XkXHdotP1FcoBlE6erU4NiTFz8fNuccfEngEUmje6bTnDzsMegRPaJuws3m7lY2iQic7c-rEUPtswGsSZqxXtwC7rPHBhVPFWhVsN0EwwFS1kkVC6nytgYp3z7z5AWGJyPlvxasUqrZ_K8h8IzajPJY7tEsU29vhjRkCOtmITOtey8zgJNUn6akW0lX2zrS8JrkuQ8hqM7iCF59f2druTiEnm1MA_j0YOV8B4ATr6CLXABB4DnPfjkTRssJsP9AYqx1xQTxGs2uotEpswrpja2yf825I9IvXFSDiXQSg-aUBg6NP0jW3Nn3fbwWnpNCLRdO9GhvSU="
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "stock_analysis_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-2e65e065-6d9d-4fc5-8730-ce3d6f8ab6eb",
+                        "name": "trading_agent",
+                        "response": {
+                          "result": "Your Order of Sell OF 7 stocks for NVDA is Pending for Approval"
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              }
+            ]
+          },
+          "creation_timestamp": 1764609706.19227
+        },
+        {
+          "invocation_id": "e-8994b1d1-4fdf-4de5-b59f-613cd8620c06",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Place a Buy order for 1500 shares of MSFT"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "The request to buy 1500 shares of MSFT has been rejected. The number of shares per order may be a maximum of 1000."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "stock_analysis_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-ab30c860-a736-442b-9c41-4082412eb0cc",
+                        "args": {
+                          "request": "Buy 1500 shares of MSFT"
+                        },
+                        "name": "trading_agent"
+                      },
+                      "thought_signature": "CtoCAePx_17hmVYg4BrVtDX2pc_9CmesoNwNl_SG_uopeyJnvEEUvT6G9zkP07Ov0-2MD9H4Z3ESgh7syrsze6HEBZXfVZ0zfUGH6qvtxJZXvu3nTagvvKeR8YOz5Rzm9QuvTCyOYphJzlCu1JqsCxHpg-UZ7QdMO3NVhwL0k2PQJ0MVDVjSH08wxiMxVPgWtugjf3e9n9ofpZfyTBTEIJcFHv41gpSzUe6UET9OqFFIamtdH50qd2OfGfz_ajMUNdVGlna1Fx2rshJucdRb-P48QSqcMtBuZubn-E5rGgqfbfisfFazKtyig-H6ehxyuJl3B6DBEx295NluOzDLymkwlc8qz5Pjtwto7KGf71Rol-Qhc3Es1KSnXp9kCcTB5jAfuIjYnU-W0l68tb52K22pnd6jGrGmc9bSrQf_36Lxwztv-v4zJLDrUlef4gXc1lmn0SvWNg0l58xGfg=="
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "stock_analysis_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-ab30c860-a736-442b-9c41-4082412eb0cc",
+                        "name": "trading_agent",
+                        "response": {
+                          "result": "The request to buy 1500 shares of MSFT has been rejected. The number of shares per order may be a maximum of 1000."
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              }
+            ]
+          },
+          "creation_timestamp": 1764609740.700363
+        },
+        {
+          "invocation_id": "e-362ffc41-6497-4c60-86fb-608c80fdb4d6",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Find details of stock FIG"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "Here are the details for the stock FIG:\n\nCompany Name: Figma, Inc.\nTicker: FIG\nCurrent Price: 35.8\nIndustry: Software - Application\nMarket Cap: 17,742,182,400\nP/E Ratio: 153.50313\nSector: Technology"
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "stock_analysis_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-0adc83ab-6227-4b4e-9563-2000e5188d55",
+                        "args": {
+                          "request": "details of stock FIG"
+                        },
+                        "name": "stockdetail_agent"
+                      },
+                      "thought_signature": "CrECAePx_15Gv6rF3l2uTQ6gdUIJcgcAJHTWH4RBMnwkWd2zieFUlnE_Rjki_o9lCLhzm6YtK7zjpzcChiFPtFxgSsTlo0d00-k6z21ZYPPwR0TqLBItE0Kb5sm0lbpQpb_D9xAxap6ABkcX4R6Si0z25rmIAdIp8qjnZhCyfJcZuP5X4wPD6qXNK1kcElG3g0L-o7u2FK-u9yOTGe0lzSBEYV6PuCNp8oaU2qLWIIN1ZfgWDqQMRPs4N8FRCO-XMyw6XBq_Sk-3fhOCCFr_o1mGS4ursYoPrXv8vd14jizK-GFk4uKlQ67JRi7R3Zs3ZB0nOfON6RKixfH1JZfalPCoU9uMzmuENCwU49sne8bk6WCW0hAtfWxWexu9Y1QeBufeJWrtkLNY2JVJSc-F4EMb33k="
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "stock_analysis_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-0adc83ab-6227-4b4e-9563-2000e5188d55",
+                        "name": "stockdetail_agent",
+                        "response": {
+                          "tickerlist": [
+                            {
+                              "ticker": "FIG",
+                              "sector": "Technology",
+                              "industry": "Software - Application",
+                              "name": "Figma, Inc.",
+                              "market_cap": 17742182400.0,
+                              "current_price": 35.8,
+                              "pe_ratio": 153.50313
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              }
+            ]
+          },
+          "creation_timestamp": 1764609803.271321
+        }
+      ],
+      "session_input": {
+        "app_name": "stockanalyst_agent",
+        "user_id": "user",
+        "state": {
+          "stockdetail_result": "",
+          "earnings_result": ""
+        }
+      },
+      "creation_timestamp": 1764609877.5233045
     }
   ],
   "creation_timestamp": 1764277686.2495236
