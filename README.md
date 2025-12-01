@@ -37,8 +37,9 @@ Though news and up-to-date information about financial markets are readily avaia
     * SummarizeAgent: Summarize and Recommend based on Earnings and Stock Details received from two(2) parallel agents. 
 *  **Trading**: This is implemented using **Human-in-the-Loop (HITL)** pattern
     * After **Analysis** for a specific symbol/ticker is completed, Chatbot allows to place a Trading order specifying 'Buy' or 'Sell' and number of stocks.
-      * To enforce some **investment discipline**, the Chatbot requires user to complete **Analysis for Recommendation** prior to placing the order. User may or may not acccept the recommendation to place an order for that stock.
+      * **NOT COMPLETED** To enforce some **investment discipline**, the Chatbot requires user to complete **Analysis for Recommendation** prior to placing the order. User may or may not acccept the recommendation to place an order for that stock.
     * If nos. of stock ordered does NOT exceed a configurable parameter, the Order is immediately 'Approved' by the Agent.
+    * If nos. of stock ordered does exceeds a configurable parameter, the Order is Rejected' by the Agent.
     * Otherwise, the Order is sent to the User for approval. User may either 'Approve' or 'Reject' the order.
 
 ### Section: Agent/Tool Flow diagram
@@ -125,7 +126,7 @@ flowchart LR
 |-------|----------|--------|-------------|---------------|
 |Search|QueryAgent|Stock Finder Tool|Find symbol of Company Intel Corporation|Symbol and Exchange Traded|
 |Search|QueryAgent|Entity Finder Tool|Find list of entity types|Static list: etfs, mutual_funds, companies, growth_companies, performing_companies|
-|Search|QueryAgent|Sector Finder Tool|Find list of sectorss|Static list: basic-materials, communication-services, consumer-cyclical, consumer-defensive, energy, financial-services, healthcare, industrials, real-estate, technology, utilities|
+|Search|QueryAgent|Sector Finder Tool|Find list of sectors|Static list: basic-materials, communication-services, consumer-cyclical, consumer-defensive, energy, financial-services, healthcare, industrials, real-estate, technology, utilities|
 |Search|WebSearchAgent|GoogleSearch Tool|Get top Political news in the USA today|<span style="color: red;">**NOTE: the LLM Haulicinated showing POTUS Trump as 'Former' POTUS Trump**</span>|
 |Research|ResearchAgent|Stock Finder/Error Tool|Find top 10 stocks for entity type performing_companies and sector healthcare order by ytd return. Your response should list company name, industry, symbol, exchange, YTD return in Tabular format. Convert YTD Return as Percentage up to 2 decimals|list of stocks with performance summary|
 |Research|StockDetailAgent|Yahoo MCP Tool|Find details of stock GOOG|details of Alphabet stocks with recent performance|
@@ -152,7 +153,8 @@ ______________________________________________________________________
 ### Section: Testing and Evaluation
 * Evals using 'adk web' UI were captured and verified.
   * Note: Often 'Run Evaluation' process in the UI failed to record anything.
-
+* Testing details for 5 test cases may be viewed from 'eval' tab.
+* **Trading Agent Approval could NOT be tested** using 'adk web'
 * **While Testing from ADK CLI and WEB, below ADK Errors were noted:**
   * File "venv/lib/python3.12/site-packages/google/adk/tools/agent_tool.py", line 169, in run_async.     merged_text = '\n'.join(p.text for p in last_content.parts if p.text)
   * File "venv/lib/python3.12/site-packages/google/adk/evaluation/local_eval_service.py", line 224, in _evaluate_single_inference_result  if eval_case.conversation_scenario is None and len(). TypeError: object of type 'NoneType' has no len()
